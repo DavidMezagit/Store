@@ -3,10 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAZZU /// DOGZ | V11 Fixed</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- SEO Meta Tags -->
+    <title>TAZZU - Burgers & Hot Dogs | Pedidos Online</title>
+    <meta name="description" content="TAZZU: El mejor lugar para burgers smash y hot dogs estilo alemán. Pedí online y recibí en tu casa. Fast & Furious delivery.">
+    <meta name="keywords" content="burgers, hot dogs, comida rápida, delivery, pedidos online, TAZZU">
+    <meta name="author" content="TAZZU">
+    <link rel="canonical" href="https://tazzu.com">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tazzu.com">
+    <meta property="og:title" content="TAZZU - Burgers & Hot Dogs">
+    <meta property="og:description" content="El mejor lugar para burgers smash y hot dogs estilo alemán">
+    <meta property="og:image" content="https://tazzu.com/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tazzu.com">
+    <meta property="twitter:title" content="TAZZU - Burgers & Hot Dogs">
+    <meta property="twitter:description" content="El mejor lugar para burgers smash y hot dogs estilo alemán">
+    <meta property="twitter:image" content="https://tazzu.com/twitter-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Preconnect para mejor rendimiento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    
+    <!-- Tailwind CSS - Versión fija para estabilidad -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    
+    <!-- Google Fonts con display=swap para mejor rendimiento -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800;900&family=Gloria+Hallelujah&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Font Awesome - Solo los iconos necesarios -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <style>
         :root { --tazzu-blue: #0044CC; }
@@ -66,24 +100,40 @@
         @keyframes popIn { from { transform: scale(0) translateY(20px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
         .pulse-icon { animation: pulse-blue 2s infinite; }
         @keyframes pulse-blue { 0% { box-shadow: 0 0 0 0 rgba(0, 68, 204, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(0, 68, 204, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 68, 204, 0); } }
+        
+        /* Focus visible para accesibilidad */
+        *:focus-visible {
+            outline: 2px solid var(--tazzu-blue);
+            outline-offset: 2px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="noise-overlay"></div>
+    <div class="noise-overlay" aria-hidden="true"></div>
 
     <div id="landing-page" class="w-full bg-black relative page-visible">
         
-        <nav class="absolute top-0 left-0 w-full z-50 py-4 md:py-6 px-4 md:px-6 flex justify-between items-center pointer-events-none">
+        <nav class="absolute top-0 left-0 w-full z-50 py-4 md:py-6 px-4 md:px-6 flex justify-between items-center pointer-events-none" role="navigation" aria-label="Navegación principal">
             <div class="font-black text-2xl md:text-3xl tracking-tighter text-white mix-blend-difference pointer-events-auto">
-                TAZZU <span class="font-hand text-blue-400 text-lg md:text-xl rotate-12 inline-block">vibe</span>
+                <a href="#home" class="focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">
+                    TAZZU <span class="font-hand text-blue-400 text-lg md:text-xl rotate-12 inline-block" aria-label="vibe">vibe</span>
+                </a>
             </div>
         </nav>
 
-        <section class="h-screen relative flex flex-col md:flex-row">
+        <section class="h-screen relative flex flex-col md:flex-row" aria-label="Selección de menú">
             
-            <div onclick="selectTeam('burgers')" class="relative h-1/2 md:h-full md:w-1/2 bg-blue-900 cursor-pointer group flex-shrink-0 border-b-4 md:border-r-4 md:border-b-0 border-white overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200" class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700">
+            <div onclick="selectTeam('burgers')" 
+                 onkeydown="if(event.key==='Enter'||event.key===' ') selectTeam('burgers')"
+                 role="button" 
+                 tabindex="0"
+                 aria-label="Ver menú de burgers Team Smash"
+                 class="relative h-1/2 md:h-full md:w-1/2 bg-blue-900 cursor-pointer group flex-shrink-0 border-b-4 md:border-r-4 md:border-b-0 border-white overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200" 
+                     alt="Hamburguesa gourmet Double Smash con queso derretido"
+                     loading="eager"
+                     class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700">
                 <div class="absolute inset-0 flex flex-col items-center justify-center z-20 text-center p-3 md:p-4">
                     <span class="font-hand text-yellow-300 text-lg md:text-2xl transform -rotate-6 mb-2 md:mb-4 drop-shadow-lg font-bold">¿Tenés hambre?</span>
                     <div class="text-bg-blur mb-3 md:mb-6">
@@ -92,14 +142,24 @@
                             <span class="text-outline">SMASH</span>
                         </h1>
                     </div>
-                    <div class="bg-white text-blue-800 px-5 md:px-8 py-2 md:py-3 rounded-full font-black text-sm md:text-lg uppercase tracking-wide shadow-2xl transform group-hover:scale-105 transition-transform flex items-center gap-2">Ver Menú <i class="fas fa-arrow-right text-xs md:text-base"></i></div>
+                    <div class="bg-white text-blue-800 px-5 md:px-8 py-2 md:py-3 rounded-full font-black text-sm md:text-lg uppercase tracking-wide shadow-2xl transform group-hover:scale-105 transition-transform flex items-center gap-2" role="button" aria-label="Ver menú de burgers">Ver Menú <i class="fas fa-arrow-right text-xs md:text-base" aria-hidden="true"></i></div>
                 </div>
             </div>
 
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 h-14 w-14 md:h-20 md:w-20 bg-white rounded-full flex items-center justify-center shadow-2xl pointer-events-none border-2 md:border-4 border-black"><span class="font-black text-lg md:text-2xl text-black">VS</span></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-40 h-14 w-14 md:h-20 md:w-20 bg-white rounded-full flex items-center justify-center shadow-2xl pointer-events-none border-2 md:border-4 border-black" aria-hidden="true">
+                <span class="font-black text-lg md:text-2xl text-black">VS</span>
+            </div>
 
-            <div onclick="selectTeam('panchos')" class="relative h-1/2 md:h-full md:w-1/2 bg-gray-900 cursor-pointer group flex-shrink-0 overflow-hidden">
-                <img src="https://malevamag.com/wp-content/uploads/2019/11/68254282_381939462521369_6877545257232236544_o.jpg" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 transition-all duration-700">
+            <div onclick="selectTeam('panchos')" 
+                 onkeydown="if(event.key==='Enter'||event.key===' ') selectTeam('panchos')"
+                 role="button" 
+                 tabindex="0"
+                 aria-label="Ver menú de hot dogs Team Dogz"
+                 class="relative h-1/2 md:h-full md:w-1/2 bg-gray-900 cursor-pointer group flex-shrink-0 overflow-hidden">
+                <img src="https://malevamag.com/wp-content/uploads/2019/11/68254282_381939462521369_6877545257232236544_o.jpg" 
+                     alt="Hot dog gourmet estilo alemán con queso y bacon"
+                     loading="eager"
+                     class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 transition-all duration-700">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
                 
                 <div class="absolute inset-0 flex flex-col items-center justify-center z-20 text-center p-3 md:p-4">
@@ -110,17 +170,17 @@
                             <span class="text-outline">DOGZ</span>
                         </h1>
                     </div>
-                    <div class="bg-blue-700 text-white px-5 md:px-8 py-2 md:py-3 rounded-full font-black text-sm md:text-lg uppercase tracking-wide shadow-2xl transform group-hover:scale-105 transition-transform flex items-center gap-2">Ver Menú <i class="fas fa-arrow-right text-xs md:text-base"></i></div>
+                    <div class="bg-blue-700 text-white px-5 md:px-8 py-2 md:py-3 rounded-full font-black text-sm md:text-lg uppercase tracking-wide shadow-2xl transform group-hover:scale-105 transition-transform flex items-center gap-2" role="button" aria-label="Ver menú de hot dogs">Ver Menú <i class="fas fa-arrow-right text-xs md:text-base" aria-hidden="true"></i></div>
                 </div>
             </div>
         </section>
 
-        <section class="py-12 md:py-20 bg-gray-50 clip-diagonal pb-20 md:pb-32">
+        <section class="py-12 md:py-20 bg-gray-50 clip-diagonal pb-20 md:pb-32" aria-labelledby="mood-heading">
             <div class="max-w-6xl mx-auto px-4 md:px-6">
                 <div class="flex flex-col md:flex-row items-end justify-between mb-8 md:mb-12">
                     <div>
                         <span class="text-blue-600 font-bold tracking-widest uppercase text-xs md:text-sm">El Mood</span>
-                        <h2 class="text-4xl md:text-5xl lg:text-7xl font-black mt-2 leading-none text-gray-900">NO ES SOLO<br>COMER.</h2>
+                        <h2 id="mood-heading" class="text-4xl md:text-5xl lg:text-7xl font-black mt-2 leading-none text-gray-900">NO ES SOLO<br>COMER.</h2>
                     </div>
                     <p class="md:max-w-xs text-gray-500 font-medium text-sm md:text-base mt-4 md:mt-0">
                         Creamos el spot perfecto para que vengas con tu gente. Buena música, buena comida y cero etiquetas.
@@ -129,47 +189,59 @@
 
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 lg:gap-8">
                     <div class="space-y-3 md:space-y-4 lg:space-y-8 mt-6 md:mt-12">
-                        <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=600" class="w-full rounded-xl md:rounded-[2rem] shadow-xl hover:scale-[1.02] transition-transform">
+                        <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=600" 
+                             alt="Ambiente del restaurante TAZZU"
+                             loading="lazy"
+                             class="w-full rounded-xl md:rounded-[2rem] shadow-xl hover:scale-[1.02] transition-transform">
                         <div class="bg-blue-600 p-4 md:p-6 lg:p-8 rounded-xl md:rounded-[2rem] text-white flex flex-col justify-between h-32 md:h-40 lg:h-48 transform rotate-1 hover:rotate-0 transition-transform">
-                            <i class="fas fa-bolt text-2xl md:text-3xl lg:text-4xl"></i>
+                            <i class="fas fa-bolt text-2xl md:text-3xl lg:text-4xl" aria-hidden="true"></i>
                             <span class="font-bold text-lg md:text-xl lg:text-2xl">Fast &<br>Furious</span>
                         </div>
                     </div>
                     <div class="space-y-3 md:space-y-4 lg:space-y-8">
-                        <img src="https://images.unsplash.com/photo-1541214113116-0c63f8db3968?q=80&w=600" class="w-full h-40 md:h-56 lg:h-64 object-cover rounded-xl md:rounded-[2rem] shadow-xl hover:scale-[1.02] transition-transform">
-                        <img src="https://images.unsplash.com/photo-1585109649139-366815a0d713?q=80&w=600" class="w-full rounded-xl md:rounded-[2rem] shadow-xl hover:scale-[1.02] transition-transform border-2 md:border-4 border-white">
+                        <img src="https://images.unsplash.com/photo-1541214113116-0c63f8db3968?q=80&w=600" 
+                             alt="Comida gourmet de TAZZU"
+                             loading="lazy"
+                             class="w-full h-40 md:h-56 lg:h-64 object-cover rounded-xl md:rounded-[2rem] shadow-xl hover:scale-[1.02] transition-transform">
+                        <img src="https://images.unsplash.com/photo-1585109649139-366815a0d713?q=80&w=600" 
+                             alt="Papas fritas con toppings"
+                             loading="lazy"
+                             class="w-full rounded-xl md:rounded-[2rem] shadow-xl hover:scale-[1.02] transition-transform border-2 md:border-4 border-white">
                     </div>
                     <div class="hidden md:block space-y-4 lg:space-y-8 mt-12 lg:mt-20">
                          <div class="bg-black p-6 lg:p-8 rounded-xl md:rounded-[2rem] text-white flex flex-col justify-center h-40 lg:h-48 text-center -rotate-2 hover:rotate-0 transition-transform">
                             <span class="font-hand text-2xl lg:text-3xl text-yellow-300">Join the<br>Club</span>
                         </div>
-                        <img src="https://images.unsplash.com/photo-1619740455993-9e612b4af65a?q=80&w=600" class="w-full rounded-xl md:rounded-[2rem] shadow-xl hover:scale-[1.02] transition-transform">
+                        <img src="https://images.unsplash.com/photo-1619740455993-9e612b4af65a?q=80&w=600" 
+                             alt="Hot dog gourmet"
+                             loading="lazy"
+                             class="w-full rounded-xl md:rounded-[2rem] shadow-xl hover:scale-[1.02] transition-transform">
                     </div>
                 </div>
             </div>
         </section>
 
-        <footer class="bg-black text-white py-12 md:py-24 px-4 md:px-6 -mt-12 md:-mt-20 pt-20 md:pt-32 clip-diagonal-top">
+        <footer class="bg-black text-white py-12 md:py-24 px-4 md:px-6 -mt-12 md:-mt-20 pt-20 md:pt-32 clip-diagonal-top" role="contentinfo">
             <div class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between gap-8 md:gap-12 mt-8 md:mt-12">
                 <div>
                     <h3 class="font-black text-3xl md:text-5xl mb-6 md:mb-8 flex items-center gap-2 md:gap-3">
-                        <span class="text-blue-600 text-4xl md:text-6xl">●</span> SPOTS
+                        <span class="text-blue-600 text-4xl md:text-6xl" aria-hidden="true">●</span> SPOTS
                     </h3>
                     <div class="space-y-6 md:space-y-8 border-l-2 border-gray-800 pl-4 md:pl-8">
                         <div>
                             <h4 class="font-bold text-xl md:text-2xl text-white mb-1">BURGERS HQ</h4>
-                            <p class="text-gray-400 text-sm md:text-lg">Av. Principal 1234, Zona Norte.</p>
+                            <address class="text-gray-400 text-sm md:text-lg not-italic">Av. Principal 1234, Zona Norte.</address>
                             <div class="flex items-center gap-2 mt-2 flex-wrap">
                                 <span class="bg-blue-900 text-blue-200 text-[10px] font-bold px-2 py-1 rounded">MIE-DOM</span>
-                                <span class="text-gray-500 text-xs md:text-sm font-bold">19:00 - 00:00</span>
+                                <time class="text-gray-500 text-xs md:text-sm font-bold">19:00 - 00:00</time>
                             </div>
                         </div>
                         <div>
                             <h4 class="font-bold text-xl md:text-2xl text-white mb-1">DOGZ CORNER</h4>
-                            <p class="text-gray-400 text-sm md:text-lg">Calle Secundaria 567, Zona Sur.</p>
+                            <address class="text-gray-400 text-sm md:text-lg not-italic">Calle Secundaria 567, Zona Sur.</address>
                             <div class="flex items-center gap-2 mt-2 flex-wrap">
                                 <span class="bg-blue-900 text-blue-200 text-[10px] font-bold px-2 py-1 rounded">JUE-DOM</span>
-                                <span class="text-gray-500 text-xs md:text-sm font-bold">20:00 - 01:00</span>
+                                <time class="text-gray-500 text-xs md:text-sm font-bold">20:00 - 01:00</time>
                             </div>
                         </div>
                     </div>
@@ -177,8 +249,20 @@
                 <div class="mt-8 md:mt-0">
                     <h3 class="font-black text-3xl md:text-5xl mb-6 md:mb-8">SOCIAL</h3>
                     <div class="flex gap-3 md:gap-4 mb-6 md:mb-8">
-                        <a href="#" class="h-12 w-12 md:h-16 md:w-16 bg-white text-black rounded-full flex items-center justify-center text-2xl md:text-3xl hover:bg-blue-600 hover:text-white transition-all transform hover:rotate-12"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="h-12 w-12 md:h-16 md:w-16 bg-white text-black rounded-full flex items-center justify-center text-2xl md:text-3xl hover:bg-green-500 hover:text-white transition-all transform hover:-rotate-12"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://instagram.com/tazzu" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           aria-label="Síguenos en Instagram"
+                           class="h-12 w-12 md:h-16 md:w-16 bg-white text-black rounded-full flex items-center justify-center text-2xl md:text-3xl hover:bg-blue-600 hover:text-white transition-all transform hover:rotate-12">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://wa.me/5491112345678" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           aria-label="Contáctanos por WhatsApp"
+                           class="h-12 w-12 md:h-16 md:w-16 bg-white text-black rounded-full flex items-center justify-center text-2xl md:text-3xl hover:bg-green-500 hover:text-white transition-all transform hover:-rotate-12">
+                            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        </a>
                     </div>
                     <p class="text-gray-600 text-xs md:text-sm font-bold uppercase tracking-widest">Designed for Tazzu.<br>© 2024</p>
                 </div>
@@ -190,96 +274,195 @@
     <div id="main-app" class="hidden min-h-screen bg-[#F5F5F7] pb-32">
         <div class="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
             <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-                <div onclick="goHome()" class="flex items-center gap-2 cursor-pointer text-gray-500 hover:text-blue-700 transition-colors">
-                    <i class="fas fa-arrow-left"></i> <span class="font-bold text-sm">Inicio</span>
-                </div>
+                <button onclick="goHome()" 
+                        aria-label="Volver al inicio"
+                        class="flex items-center gap-2 cursor-pointer text-gray-500 hover:text-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i> <span class="font-bold text-sm">Inicio</span>
+                </button>
                 <div class="font-black text-2xl text-blue-700 tracking-tighter">TAZZU</div>
-                <div class="relative cursor-pointer group" onclick="toggleCart()">
+                <button onclick="toggleCart()" 
+                        aria-label="Abrir carrito de compras"
+                        class="relative cursor-pointer group focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full">
                     <div id="cart-icon-bg" class="h-10 w-10 bg-black text-white rounded-full flex items-center justify-center shadow-lg transition-colors">
-                        <i class="fas fa-shopping-bag"></i>
+                        <i class="fas fa-shopping-bag" aria-hidden="true"></i>
                     </div>
-                    <span id="nav-cart-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full border-2 border-white transform scale-0 transition-transform">0</span>
-                </div>
+                    <span id="nav-cart-count" 
+                          class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full border-2 border-white transform scale-0 transition-transform"
+                          aria-live="polite"
+                          aria-atomic="true">0</span>
+                </button>
             </div>
-            <div class="max-w-6xl mx-auto px-4 pb-3 flex overflow-x-auto gap-2 no-scrollbar">
-                <button onclick="filterMenu('all')" class="cat-btn bg-black text-white px-4 py-2 rounded-full font-bold text-xs shadow-md whitespace-nowrap active:scale-95">Todo</button>
-                <button onclick="filterMenu('burgers')" class="cat-btn bg-white border border-gray-200 text-gray-600 px-4 py-2 rounded-full font-bold text-xs whitespace-nowrap active:scale-95">🍔 Burgers</button>
-                <button onclick="filterMenu('panchos')" class="cat-btn bg-white border border-gray-200 text-gray-600 px-4 py-2 rounded-full font-bold text-xs whitespace-nowrap active:scale-95">🌭 Panchos</button>
-                <button onclick="filterMenu('fries')" class="cat-btn bg-white border border-gray-200 text-gray-600 px-4 py-2 rounded-full font-bold text-xs whitespace-nowrap active:scale-95">🍟 Papas</button>
+            <div class="max-w-6xl mx-auto px-4 pb-3 flex overflow-x-auto gap-2 no-scrollbar" role="tablist" aria-label="Filtros de categorías">
+                <button onclick="filterMenu('all', event)" 
+                        class="cat-btn bg-black text-white px-4 py-2 rounded-full font-bold text-xs shadow-md whitespace-nowrap active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        role="tab"
+                        aria-selected="true"
+                        aria-controls="menu-container">Todo</button>
+                <button onclick="filterMenu('burgers', event)" 
+                        class="cat-btn bg-white border border-gray-200 text-gray-600 px-4 py-2 rounded-full font-bold text-xs whitespace-nowrap active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="menu-container">🍔 Burgers</button>
+                <button onclick="filterMenu('panchos', event)" 
+                        class="cat-btn bg-white border border-gray-200 text-gray-600 px-4 py-2 rounded-full font-bold text-xs whitespace-nowrap active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="menu-container">🌭 Panchos</button>
+                <button onclick="filterMenu('fries', event)" 
+                        class="cat-btn bg-white border border-gray-200 text-gray-600 px-4 py-2 rounded-full font-bold text-xs whitespace-nowrap active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="menu-container">🍟 Papas</button>
             </div>
         </div>
 
         <div class="max-w-6xl mx-auto p-3 md:p-4">
-            <div class="relative w-full h-32 md:h-44 rounded-xl md:rounded-[2rem] overflow-hidden shadow-xl bg-blue-600 flex items-center">
-                <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+            <div class="relative w-full h-32 md:h-44 rounded-xl md:rounded-[2rem] overflow-hidden shadow-xl bg-blue-600 flex items-center" role="banner">
+                <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" aria-hidden="true"></div>
                 <div class="relative z-10 px-4 md:px-6 w-2/3 md:w-2/3 text-white">
                     <span class="bg-yellow-400 text-black text-[9px] md:text-[10px] font-black px-1.5 md:px-2 py-0.5 md:py-1 uppercase tracking-widest mb-1 md:mb-2 inline-block rounded-sm">Promo Web</span>
                     <h2 class="text-2xl md:text-3xl lg:text-5xl font-black leading-none mb-0.5 md:mb-1">DOBLE O NADA.</h2>
                     <p class="text-blue-100 text-[10px] md:text-xs lg:text-sm font-medium">Pedí tu Smash Doble y te regalamos la bebida.</p>
                 </div>
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600" class="absolute -right-2 md:-right-5 top-1/2 transform -translate-y-1/2 h-24 md:h-32 lg:h-40 object-cover rotate-12 drop-shadow-2xl hidden sm:block">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600" 
+                     alt="Promoción: Smash Doble"
+                     loading="lazy"
+                     class="absolute -right-2 md:-right-5 top-1/2 transform -translate-y-1/2 h-24 md:h-32 lg:h-40 object-cover rotate-12 drop-shadow-2xl hidden sm:block">
             </div>
         </div>
 
         <div class="max-w-6xl mx-auto px-4 pb-20">
             <h3 class="font-black text-xl mb-4 text-gray-800">Menú</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="menu-container"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="menu-container" role="region" aria-label="Lista de productos"></div>
         </div>
 
-        <div id="floating-cart-btn" onclick="toggleCart()" class="hidden fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 bg-black text-white px-4 md:px-6 py-3 md:py-4 rounded-full shadow-2xl flex items-center gap-2 md:gap-3 cursor-pointer hover:scale-105 transition-transform float-btn-enter border-2 border-white/20">
+        <button id="floating-cart-btn" 
+                onclick="toggleCart()" 
+                aria-label="Ver carrito de compras"
+                class="hidden fixed bottom-4 right-4 md:bottom-6 md:right-6 z-40 bg-black text-white px-4 md:px-6 py-3 md:py-4 rounded-full shadow-2xl flex items-center gap-2 md:gap-3 cursor-pointer hover:scale-105 transition-transform float-btn-enter border-2 border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-400">
             <div class="relative">
-                <i class="fas fa-shopping-bag text-lg md:text-xl"></i>
-                <span id="float-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full">0</span>
+                <i class="fas fa-shopping-bag text-lg md:text-xl" aria-hidden="true"></i>
+                <span id="float-count" 
+                      class="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] font-bold h-5 w-5 flex items-center justify-center rounded-full"
+                      aria-live="polite"
+                      aria-atomic="true">0</span>
             </div>
             <div class="flex flex-col leading-none">
                 <span class="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase">Ver Pedido</span>
-                <span class="font-black text-base md:text-lg" id="float-total">$0</span>
+                <span class="font-black text-base md:text-lg" id="float-total" aria-label="Total del pedido">$0</span>
             </div>
-            <i class="fas fa-chevron-right ml-1 md:ml-2 text-xs md:text-sm text-gray-500"></i>
-        </div>
+            <i class="fas fa-chevron-right ml-1 md:ml-2 text-xs md:text-sm text-gray-500" aria-hidden="true"></i>
+        </button>
     </div>
 
-    <div id="cart-overlay" class="fixed inset-0 bg-black/60 z-[60] backdrop-blur-sm overlay" onclick="toggleCart()"></div>
-    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-[400px] bg-white z-[70] shadow-2xl cart-sidebar flex flex-col">
+    <div id="cart-overlay" 
+         class="fixed inset-0 bg-black/60 z-[60] backdrop-blur-sm overlay" 
+         onclick="toggleCart()"
+         role="dialog"
+         aria-label="Carrito de compras"
+         aria-modal="true"
+         aria-hidden="true"></div>
+    <aside id="cart-sidebar" 
+           class="fixed top-0 right-0 h-full w-full md:w-[400px] bg-white z-[70] shadow-2xl cart-sidebar flex flex-col"
+           role="complementary"
+           aria-label="Carrito de compras">
         <div class="p-4 md:p-5 border-b border-gray-100 flex justify-between items-center bg-white z-10">
             <h2 class="font-black text-lg md:text-xl">Tu Pedido</h2>
-            <button onclick="toggleCart()" class="h-8 w-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-200"><i class="fas fa-times text-sm md:text-base"></i></button>
+            <button onclick="toggleCart()" 
+                    aria-label="Cerrar carrito"
+                    class="h-8 w-8 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <i class="fas fa-times text-sm md:text-base" aria-hidden="true"></i>
+            </button>
         </div>
-        <div id="cart-items-list" class="flex-1 overflow-y-auto p-3 md:p-4 space-y-2 md:space-y-3 bg-gray-50"></div>
+        <div id="cart-items-list" 
+             class="flex-1 overflow-y-auto p-3 md:p-4 space-y-2 md:space-y-3 bg-gray-50"
+             role="region"
+             aria-label="Items del carrito"></div>
         <div class="p-4 md:p-5 bg-white border-t border-gray-100 z-10 shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
             <div class="flex justify-between items-center mb-3 md:mb-4">
                 <span class="text-lg md:text-xl font-black text-gray-900">Total</span>
-                <span class="text-2xl md:text-3xl font-black text-blue-700" id="cart-total">$0</span>
+                <span class="text-2xl md:text-3xl font-black text-blue-700" id="cart-total" aria-label="Total a pagar">$0</span>
             </div>
-            <button onclick="checkout()" class="w-full bg-[#25D366] text-white py-3 md:py-4 rounded-xl font-black text-base md:text-lg flex items-center justify-center gap-2 hover:bg-[#20bd5a] shadow-lg"><span class="hidden sm:inline">PEDIR POR </span>WHATSAPP <i class="fab fa-whatsapp text-xl md:text-2xl"></i></button>
+            <button onclick="checkout()" 
+                    aria-label="Realizar pedido por WhatsApp"
+                    class="w-full bg-[#25D366] text-white py-3 md:py-4 rounded-xl font-black text-base md:text-lg flex items-center justify-center gap-2 hover:bg-[#20bd5a] shadow-lg focus:outline-none focus:ring-2 focus:ring-green-400">
+                <span class="hidden sm:inline">PEDIR POR </span>WHATSAPP <i class="fab fa-whatsapp text-xl md:text-2xl" aria-hidden="true"></i>
+            </button>
         </div>
-    </div>
+    </aside>
 
-    <div id="upsell-modal" class="fixed inset-0 z-[80] bg-black/80 hidden flex items-center justify-center p-3 md:p-4 backdrop-blur-sm">
+    <div id="upsell-modal" 
+         class="fixed inset-0 z-[80] bg-black/80 hidden flex items-center justify-center p-3 md:p-4 backdrop-blur-sm"
+         role="dialog"
+         aria-labelledby="upsell-title"
+         aria-modal="true"
+         aria-hidden="true">
         <div class="bg-white w-full max-w-sm rounded-2xl md:rounded-[2rem] p-4 md:p-6 shadow-2xl relative animate-bounce-in mx-2">
-            <button onclick="closeModal('upsell-modal')" class="absolute top-3 md:top-4 right-3 md:right-4 text-gray-300 hover:text-black"><i class="fas fa-times text-lg md:text-xl"></i></button>
+            <button onclick="closeModal('upsell-modal')" 
+                    aria-label="Cerrar modal"
+                    class="absolute top-3 md:top-4 right-3 md:right-4 text-gray-300 hover:text-black focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">
+                <i class="fas fa-times text-lg md:text-xl" aria-hidden="true"></i>
+            </button>
             <div class="text-center">
-                <div class="h-12 w-12 md:h-14 md:w-14 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto text-xl md:text-2xl mb-2">🍟</div>
-                <h3 class="font-black text-xl md:text-2xl text-gray-900">¿Sale completo?</h3>
+                <div class="h-12 w-12 md:h-14 md:w-14 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto text-xl md:text-2xl mb-2" aria-hidden="true">🍟</div>
+                <h3 id="upsell-title" class="font-black text-xl md:text-2xl text-gray-900">¿Sale completo?</h3>
             </div>
             <div class="space-y-2 md:space-y-3 mt-4 md:mt-6">
-                <label class="flex items-center justify-between p-2.5 md:p-3 rounded-lg md:rounded-xl border border-gray-100 hover:border-blue-500 hover:bg-blue-50 cursor-pointer transition-colors">
-                    <div class="flex items-center gap-2 md:gap-3"><i class="fas fa-utensils text-gray-300 text-sm md:text-base"></i> <span class="font-bold text-gray-700 text-xs md:text-sm">Papas Chicas</span></div>
-                    <div class="flex items-center gap-2"><span class="text-blue-600 font-bold text-[10px] md:text-xs">+$2.500</span> <input type="checkbox" id="extra-fries" class="accent-blue-600 w-4 h-4 md:w-5 md:h-5"></div>
+                <label class="flex items-center justify-between p-2.5 md:p-3 rounded-lg md:rounded-xl border border-gray-100 hover:border-blue-500 hover:bg-blue-50 cursor-pointer transition-colors focus-within:ring-2 focus-within:ring-blue-400">
+                    <div class="flex items-center gap-2 md:gap-3">
+                        <i class="fas fa-utensils text-gray-300 text-sm md:text-base" aria-hidden="true"></i> 
+                        <span class="font-bold text-gray-700 text-xs md:text-sm">Papas Chicas</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-blue-600 font-bold text-[10px] md:text-xs">+$2.500</span> 
+                        <input type="checkbox" 
+                               id="extra-fries" 
+                               class="accent-blue-600 w-4 h-4 md:w-5 md:h-5"
+                               aria-label="Agregar papas chicas por $2.500">
+                    </div>
                 </label>
-                <label class="flex items-center justify-between p-2.5 md:p-3 rounded-lg md:rounded-xl border border-gray-100 hover:border-blue-500 hover:bg-blue-50 cursor-pointer transition-colors">
-                    <div class="flex items-center gap-2 md:gap-3"><i class="fas fa-glass-whiskey text-gray-300 text-sm md:text-base"></i> <span class="font-bold text-gray-700 text-xs md:text-sm">Coca-Cola</span></div>
-                    <div class="flex items-center gap-2"><span class="text-blue-600 font-bold text-[10px] md:text-xs">+$1.800</span> <input type="checkbox" id="extra-drink" class="accent-blue-600 w-4 h-4 md:w-5 md:h-5"></div>
+                <label class="flex items-center justify-between p-2.5 md:p-3 rounded-lg md:rounded-xl border border-gray-100 hover:border-blue-500 hover:bg-blue-50 cursor-pointer transition-colors focus-within:ring-2 focus-within:ring-blue-400">
+                    <div class="flex items-center gap-2 md:gap-3">
+                        <i class="fas fa-glass-whiskey text-gray-300 text-sm md:text-base" aria-hidden="true"></i> 
+                        <span class="font-bold text-gray-700 text-xs md:text-sm">Coca-Cola</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-blue-600 font-bold text-[10px] md:text-xs">+$1.800</span> 
+                        <input type="checkbox" 
+                               id="extra-drink" 
+                               class="accent-blue-600 w-4 h-4 md:w-5 md:h-5"
+                               aria-label="Agregar Coca-Cola por $1.800">
+                    </div>
                 </label>
             </div>
             <div class="mt-4 md:mt-6 flex gap-2 md:gap-3">
-                <button onclick="addJustItem()" class="flex-1 py-2.5 md:py-3 rounded-lg md:rounded-xl border border-gray-200 font-bold text-xs md:text-sm text-gray-400 hover:text-gray-600">No gracias</button>
-                <button onclick="confirmAdd()" class="flex-1 py-2.5 md:py-3 rounded-lg md:rounded-xl bg-blue-700 text-white font-bold text-xs md:text-sm hover:bg-blue-800 shadow-lg">¡De una!</button>
+                <button onclick="addJustItem()" 
+                        class="flex-1 py-2.5 md:py-3 rounded-lg md:rounded-xl border border-gray-200 font-bold text-xs md:text-sm text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400">
+                    No gracias
+                </button>
+                <button onclick="confirmAdd()" 
+                        class="flex-1 py-2.5 md:py-3 rounded-lg md:rounded-xl bg-blue-700 text-white font-bold text-xs md:text-sm hover:bg-blue-800 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    ¡De una!
+                </button>
             </div>
         </div>
     </div>
 
     <script>
+        // ============================================
+        // CONFIGURACIÓN (Fácil de cambiar por cliente)
+        // ============================================
+        const CONFIG = {
+            whatsappNumber: '541169120893', // Cambiar aquí el número
+            whatsappMessage: {
+                header: '*🔥 PEDIDO WEB TAZZU 🔥*',
+                footer: '\n\n📍 _Dirección:_ \n💳 _Pago:_'
+            }
+        };
+
+        // ============================================
+        // DATOS DE PRODUCTOS
+        // ============================================
         const products = [
             { id: 1, name: "Double Smash", desc: "Doble carne 100g, cheddar x4, salsa especial.", price: 9500, category: "burgers", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600", badge: "🔥 Top 1" },
             { id: 2, name: "Oklahoma Onion", desc: "Smash con cebolla grillada incrustada.", price: 9200, category: "burgers", img: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=600", badge: "Nuevo" },
@@ -289,136 +472,477 @@
             { id: 6, name: "Papas Tazzu", desc: "Bañadas en cheddar, bacon y verdeo.", price: 4500, category: "fries", img: "https://images.unsplash.com/photo-1585109649139-366815a0d713?q=80&w=600", badge: "Para compartir" },
         ];
         
-        let cart = []; let currentSelection = null;
+        let cart = []; 
+        let currentSelection = null;
 
-        function selectTeam(team) { goApp(); filterMenu(team); }
+        // ============================================
+        // FUNCIÓN DE SANITIZACIÓN (Prevención XSS)
+        // ============================================
+        function escapeHtml(text) {
+            if (!text) return '';
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return String(text).replace(/[&<>"']/g, m => map[m]);
+        }
+
+        // ============================================
+        // NAVEGACIÓN
+        // ============================================
+        function selectTeam(team) { 
+            if (!team || typeof team !== 'string') return;
+            goApp(); 
+            filterMenu(team, null); 
+        }
+        
         function goApp() { 
-            const landing = document.getElementById('landing-page');
-            const app = document.getElementById('main-app');
-            landing.classList.add('page-hidden');
-            landing.classList.remove('page-visible');
-            app.classList.remove('page-hidden', 'hidden');
-            app.classList.add('page-visible');
-            app.style.display = 'block';
-            // Asegurar que el body tenga el fondo correcto
-            document.body.style.backgroundColor = '#F5F5F7';
-            window.scrollTo(0,0); 
+            try {
+                const landing = document.getElementById('landing-page');
+                const app = document.getElementById('main-app');
+                if (!landing || !app) return;
+                
+                landing.classList.add('page-hidden');
+                landing.classList.remove('page-visible');
+                app.classList.remove('page-hidden', 'hidden');
+                app.classList.add('page-visible');
+                app.style.display = 'block';
+                document.body.style.backgroundColor = '#F5F5F7';
+                window.scrollTo(0,0);
+            } catch (error) {
+                console.error('Error en goApp:', error);
+            }
         }
+        
         function goHome() { 
-            const landing = document.getElementById('landing-page');
-            const app = document.getElementById('main-app');
-            app.classList.add('page-hidden', 'hidden');
-            app.classList.remove('page-visible');
-            app.style.display = 'none';
-            
-            // Mostrar landing
-            landing.classList.remove('page-hidden', 'hidden');
-            landing.classList.add('page-visible');
-            landing.style.display = 'block';
-            
-            // Forzar reflow múltiple para asegurar renderizado
-            void landing.offsetHeight;
-            requestAnimationFrame(() => {
+            try {
+                const landing = document.getElementById('landing-page');
+                const app = document.getElementById('main-app');
+                if (!landing || !app) return;
+                
+                app.classList.add('page-hidden', 'hidden');
+                app.classList.remove('page-visible');
+                app.style.display = 'none';
+                
+                landing.classList.remove('page-hidden', 'hidden');
+                landing.classList.add('page-visible');
+                landing.style.display = 'block';
+                
                 void landing.offsetHeight;
-                // Asegurar que todas las imágenes estén visibles
-                const images = landing.querySelectorAll('img');
-                images.forEach(img => {
-                    img.style.display = '';
-                    img.style.visibility = 'visible';
-                    img.style.opacity = '';
+                requestAnimationFrame(() => {
+                    void landing.offsetHeight;
+                    const images = landing.querySelectorAll('img');
+                    images.forEach(img => {
+                        img.style.display = '';
+                        img.style.visibility = 'visible';
+                        img.style.opacity = '';
+                    });
                 });
-            });
-            
-            // Asegurar que el body tenga el fondo correcto
-            document.body.style.backgroundColor = '#000000';
-            window.scrollTo(0,0); 
+                
+                document.body.style.backgroundColor = '#000000';
+                window.scrollTo(0,0);
+            } catch (error) {
+                console.error('Error en goHome:', error);
+            }
         }
-        function closeModal(modalId) { document.getElementById(modalId).classList.add('hidden'); }
+        
+        function closeModal(modalId) { 
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.setAttribute('aria-hidden', 'true');
+            }
+        }
 
+        // ============================================
+        // RENDERIZADO DE PRODUCTOS (SEGURO)
+        // ============================================
         function renderProducts(items) {
-            document.getElementById('menu-container').innerHTML = items.map(p => `
-                <div class="bg-white rounded-[1.5rem] p-3 shadow-sm hover:shadow-lg transition-all border border-gray-100 flex flex-col h-full group">
-                    <div class="relative h-48 rounded-2xl overflow-hidden mb-3 bg-gray-100">
-                        <img src="${p.img}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" alt="${p.name}">
-                        ${p.badge ? `<div class="absolute top-2 left-2 bg-white/90 backdrop-blur text-blue-700 text-[10px] font-black px-2 py-1 rounded-md shadow-sm uppercase tracking-wide">${p.badge}</div>` : ''}
-                        <div class="absolute bottom-2 right-2 bg-black text-white text-xs font-bold px-3 py-1 rounded-full">$${p.price.toLocaleString()}</div>
-                    </div>
-                    <div class="flex-1 flex flex-col">
-                        <h3 class="font-black text-lg text-gray-900 leading-tight mb-1">${p.name}</h3>
-                        <p class="text-gray-500 text-xs font-medium leading-relaxed mb-4 line-clamp-2">${p.desc}</p>
-                        <button onclick="openUpsell(${p.id})" class="mt-auto w-full bg-gray-50 text-gray-800 font-bold py-3 rounded-xl border border-gray-200 hover:bg-black hover:text-white hover:border-black transition-all flex items-center justify-center gap-2 text-sm">
-                            Agregar <i class="fas fa-plus-circle"></i>
-                        </button>
-                    </div>
-                </div>`).join('');
+            const container = document.getElementById('menu-container');
+            if (!container || !Array.isArray(items)) return;
+            
+            // Usar createElement en lugar de innerHTML para seguridad
+            container.innerHTML = ''; // Limpiar primero
+            
+            items.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-[1.5rem] p-3 shadow-sm hover:shadow-lg transition-all border border-gray-100 flex flex-col h-full group';
+                
+                const imgContainer = document.createElement('div');
+                imgContainer.className = 'relative h-48 rounded-2xl overflow-hidden mb-3 bg-gray-100';
+                
+                const img = document.createElement('img');
+                img.src = escapeHtml(product.img);
+                img.alt = escapeHtml(product.name);
+                img.className = 'w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500';
+                img.loading = 'lazy';
+                imgContainer.appendChild(img);
+                
+                if (product.badge) {
+                    const badge = document.createElement('div');
+                    badge.className = 'absolute top-2 left-2 bg-white/90 backdrop-blur text-blue-700 text-[10px] font-black px-2 py-1 rounded-md shadow-sm uppercase tracking-wide';
+                    badge.textContent = escapeHtml(product.badge);
+                    imgContainer.appendChild(badge);
+                }
+                
+                const price = document.createElement('div');
+                price.className = 'absolute bottom-2 right-2 bg-black text-white text-xs font-bold px-3 py-1 rounded-full';
+                price.textContent = '$' + product.price.toLocaleString();
+                imgContainer.appendChild(price);
+                
+                const content = document.createElement('div');
+                content.className = 'flex-1 flex flex-col';
+                
+                const title = document.createElement('h3');
+                title.className = 'font-black text-lg text-gray-900 leading-tight mb-1';
+                title.textContent = escapeHtml(product.name);
+                content.appendChild(title);
+                
+                const desc = document.createElement('p');
+                desc.className = 'text-gray-500 text-xs font-medium leading-relaxed mb-4 line-clamp-2';
+                desc.textContent = escapeHtml(product.desc);
+                content.appendChild(desc);
+                
+                const btn = document.createElement('button');
+                btn.className = 'mt-auto w-full bg-gray-50 text-gray-800 font-bold py-3 rounded-xl border border-gray-200 hover:bg-black hover:text-white hover:border-black transition-all flex items-center justify-center gap-2 text-sm';
+                btn.setAttribute('onclick', `openUpsell(${product.id})`);
+                btn.setAttribute('aria-label', `Agregar ${escapeHtml(product.name)} al carrito`);
+                btn.innerHTML = 'Agregar <i class="fas fa-plus-circle" aria-hidden="true"></i>';
+                content.appendChild(btn);
+                
+                card.appendChild(imgContainer);
+                card.appendChild(content);
+                container.appendChild(card);
+            });
         }
-        function filterMenu(category) {
-            document.querySelectorAll('.cat-btn').forEach(btn => { btn.classList.remove('bg-black', 'text-white', 'shadow-md'); btn.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200'); });
-            event.target.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-200'); event.target.classList.add('bg-black', 'text-white', 'shadow-md');
-            renderProducts(category === 'all' ? products : products.filter(p => p.category === category));
+        
+        function filterMenu(category, event) {
+            try {
+                // Usar event pasado como parámetro en lugar de event global
+                if (event && event.target) {
+                    document.querySelectorAll('.cat-btn').forEach(btn => { 
+                        btn.classList.remove('bg-black', 'text-white', 'shadow-md'); 
+                        btn.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200');
+                        btn.setAttribute('aria-selected', 'false');
+                    });
+                    event.target.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-200'); 
+                    event.target.classList.add('bg-black', 'text-white', 'shadow-md');
+                    event.target.setAttribute('aria-selected', 'true');
+                }
+                
+                const filtered = category === 'all' ? products : products.filter(p => p.category === category);
+                renderProducts(filtered);
+            } catch (error) {
+                console.error('Error en filterMenu:', error);
+            }
         }
 
+        // ============================================
+        // CARRITO
+        // ============================================
         function toggleCart() {
-            const sidebar = document.getElementById('cart-sidebar'); const overlay = document.getElementById('cart-overlay');
-            sidebar.classList.toggle('cart-open'); overlay.classList.toggle('overlay-visible');
-            if(sidebar.classList.contains('cart-open')) renderCartItems();
+            try {
+                const sidebar = document.getElementById('cart-sidebar');
+                const overlay = document.getElementById('cart-overlay');
+                if (!sidebar || !overlay) return;
+                
+                const isOpen = sidebar.classList.contains('cart-open');
+                sidebar.classList.toggle('cart-open');
+                overlay.classList.toggle('overlay-visible');
+                
+                // Actualizar atributos ARIA
+                sidebar.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+                overlay.setAttribute('aria-hidden', isOpen ? 'true' : 'false');
+                
+                if (!isOpen) renderCartItems();
+            } catch (error) {
+                console.error('Error en toggleCart:', error);
+            }
         }
 
-        function openUpsell(productId) { currentSelection = products.find(p => p.id === productId); document.getElementById('extra-fries').checked = false; document.getElementById('extra-drink').checked = false; document.getElementById('upsell-modal').classList.remove('hidden'); }
-        function confirmAdd() { if (!currentSelection) return; let finalPrice = currentSelection.price; let extras = []; if (document.getElementById('extra-fries').checked) { finalPrice += 2500; extras.push("Papas"); } if (document.getElementById('extra-drink').checked) { finalPrice += 1800; extras.push("Coca"); } addToCart(currentSelection, finalPrice, extras); closeModal('upsell-modal'); }
-        function addJustItem() { if (!currentSelection) return; addToCart(currentSelection, currentSelection.price, []); closeModal('upsell-modal'); }
+        function openUpsell(productId) {
+            try {
+                const product = products.find(p => p.id === productId);
+                if (!product) return;
+                
+                currentSelection = product;
+                const friesCheck = document.getElementById('extra-fries');
+                const drinkCheck = document.getElementById('extra-drink');
+                const modal = document.getElementById('upsell-modal');
+                
+                if (friesCheck) friesCheck.checked = false;
+                if (drinkCheck) drinkCheck.checked = false;
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    modal.setAttribute('aria-hidden', 'false');
+                }
+            } catch (error) {
+                console.error('Error en openUpsell:', error);
+            }
+        }
+        
+        function confirmAdd() { 
+            try {
+                if (!currentSelection) return;
+                
+                let finalPrice = currentSelection.price;
+                let extras = [];
+                
+                const friesCheck = document.getElementById('extra-fries');
+                const drinkCheck = document.getElementById('extra-drink');
+                
+                if (friesCheck && friesCheck.checked) { 
+                    finalPrice += 2500; 
+                    extras.push("Papas"); 
+                }
+                if (drinkCheck && drinkCheck.checked) { 
+                    finalPrice += 1800; 
+                    extras.push("Coca"); 
+                }
+                
+                addToCart(currentSelection, finalPrice, extras);
+                closeModal('upsell-modal');
+            } catch (error) {
+                console.error('Error en confirmAdd:', error);
+            }
+        }
+        
+        function addJustItem() { 
+            try {
+                if (!currentSelection) return;
+                addToCart(currentSelection, currentSelection.price, []);
+                closeModal('upsell-modal');
+            } catch (error) {
+                console.error('Error en addJustItem:', error);
+            }
+        }
 
         function addToCart(product, finalPrice, extras) {
-            const existingItem = cart.find(item => item.id === product.id && JSON.stringify(item.extras) === JSON.stringify(extras));
-            if (existingItem) { existingItem.qty++; } else { cart.push({ id: product.id, name: product.name, price: finalPrice, basePrice: product.price, extras: extras, img: product.img, qty: 1 }); }
-            updateCartUI();
+            try {
+                if (!product || typeof finalPrice !== 'number' || !Array.isArray(extras)) return;
+                
+                const existingItem = cart.find(item => 
+                    item.id === product.id && 
+                    JSON.stringify(item.extras) === JSON.stringify(extras)
+                );
+                
+                if (existingItem) { 
+                    existingItem.qty++; 
+                } else { 
+                    cart.push({ 
+                        id: product.id, 
+                        name: product.name, 
+                        price: finalPrice, 
+                        basePrice: product.price, 
+                        extras: extras, 
+                        img: product.img, 
+                        qty: 1 
+                    }); 
+                }
+                updateCartUI();
+            } catch (error) {
+                console.error('Error en addToCart:', error);
+            }
         }
 
-        function updateQty(index, change) { if (cart[index].qty + change > 0) { cart[index].qty += change; } else { cart.splice(index, 1); } updateCartUI(); renderCartItems(); }
-        function removeFromCart(index) { cart.splice(index, 1); updateCartUI(); renderCartItems(); }
+        function updateQty(index, change) {
+            try {
+                if (!cart[index] || typeof index !== 'number') return;
+                if (cart[index].qty + change > 0) { 
+                    cart[index].qty += change; 
+                } else { 
+                    cart.splice(index, 1); 
+                }
+                updateCartUI(); 
+                renderCartItems();
+            } catch (error) {
+                console.error('Error en updateQty:', error);
+            }
+        }
+        
+        function removeFromCart(index) {
+            try {
+                if (typeof index !== 'number' || !cart[index]) return;
+                cart.splice(index, 1); 
+                updateCartUI(); 
+                renderCartItems();
+            } catch (error) {
+                console.error('Error en removeFromCart:', error);
+            }
+        }
 
         function updateCartUI() {
-            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            const count = cart.reduce((sum, item) => sum + item.qty, 0);
-            document.getElementById('cart-total').innerText = `$${total.toLocaleString()}`;
-            document.getElementById('float-total').innerText = `$${total.toLocaleString()}`;
-            
-            ['nav-cart-count', 'float-count'].forEach(id => {
-                const badge = document.getElementById(id); badge.innerText = count;
-                if(count > 0) { badge.classList.remove('scale-0'); badge.classList.add('scale-110'); setTimeout(() => badge.classList.remove('scale-110'), 200); } else { badge.classList.add('scale-0'); }
-            });
-            const iconBg = document.getElementById('cart-icon-bg');
-            if(count > 0) iconBg.classList.add('pulse-icon'); else iconBg.classList.remove('pulse-icon');
-            const floatBtn = document.getElementById('floating-cart-btn');
-            if(count > 0) floatBtn.classList.remove('hidden'); else floatBtn.classList.add('hidden');
+            try {
+                const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+                const count = cart.reduce((sum, item) => sum + item.qty, 0);
+                
+                const cartTotalEl = document.getElementById('cart-total');
+                const floatTotalEl = document.getElementById('float-total');
+                
+                if (cartTotalEl) cartTotalEl.textContent = `$${total.toLocaleString()}`;
+                if (floatTotalEl) floatTotalEl.textContent = `$${total.toLocaleString()}`;
+                
+                ['nav-cart-count', 'float-count'].forEach(id => {
+                    const badge = document.getElementById(id);
+                    if (badge) {
+                        badge.textContent = count;
+                        if(count > 0) { 
+                            badge.classList.remove('scale-0'); 
+                            badge.classList.add('scale-110'); 
+                            setTimeout(() => badge.classList.remove('scale-110'), 200); 
+                        } else { 
+                            badge.classList.add('scale-0'); 
+                        }
+                    }
+                });
+                
+                const iconBg = document.getElementById('cart-icon-bg');
+                if (iconBg) {
+                    if(count > 0) iconBg.classList.add('pulse-icon'); 
+                    else iconBg.classList.remove('pulse-icon');
+                }
+                
+                const floatBtn = document.getElementById('floating-cart-btn');
+                if (floatBtn) {
+                    if(count > 0) floatBtn.classList.remove('hidden'); 
+                    else floatBtn.classList.add('hidden');
+                }
+            } catch (error) {
+                console.error('Error en updateCartUI:', error);
+            }
         }
 
         function renderCartItems() {
-            const container = document.getElementById('cart-items-list');
-            if(cart.length === 0) { container.innerHTML = `<div class="flex flex-col items-center justify-center h-64 text-center opacity-40"><i class="fas fa-hamburger text-6xl mb-4 text-gray-300"></i><h4 class="font-bold text-gray-500">Carrito vacío</h4><p class="text-xs text-gray-400 mt-2">¡Elegí algo rico del menú!</p></div>`; return; }
-            container.innerHTML = cart.map((item, index) => `
-                <div class="bg-white p-3 rounded-xl border border-gray-100 flex gap-3 items-center shadow-sm">
-                    <img src="${item.img}" class="h-14 w-14 rounded-lg object-cover">
-                    <div class="flex-1">
-                        <div class="flex justify-between items-start"><h4 class="font-bold text-gray-800 text-sm leading-tight">${item.name}</h4><button onclick="removeFromCart(${index})" class="text-gray-300 hover:text-red-500"><i class="fas fa-trash-alt text-xs"></i></button></div>
-                        <div class="text-[10px] text-gray-500 mb-2">${item.extras.length ? '+ ' + item.extras.join(', ') : 'Solo'}</div>
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center gap-2 bg-gray-50 rounded-lg px-2 py-1"><button onclick="updateQty(${index}, -1)" class="text-gray-500 hover:text-black font-bold text-xs">-</button><span class="text-xs font-black w-4 text-center">${item.qty}</span><button onclick="updateQty(${index}, 1)" class="text-gray-500 hover:text-black font-bold text-xs">+</button></div>
-                            <div class="font-black text-blue-700 text-sm">$${(item.price * item.qty).toLocaleString()}</div>
-                        </div>
-                    </div>
-                </div>`).join('');
+            try {
+                const container = document.getElementById('cart-items-list');
+                if (!container) return;
+                
+                if(cart.length === 0) { 
+                    container.innerHTML = `<div class="flex flex-col items-center justify-center h-64 text-center opacity-40"><i class="fas fa-hamburger text-6xl mb-4 text-gray-300" aria-hidden="true"></i><h4 class="font-bold text-gray-500">Carrito vacío</h4><p class="text-xs text-gray-400 mt-2">¡Elegí algo rico del menú!</p></div>`; 
+                    return; 
+                }
+                
+                // Usar createElement para seguridad
+                container.innerHTML = '';
+                cart.forEach((item, index) => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'bg-white p-3 rounded-xl border border-gray-100 flex gap-3 items-center shadow-sm';
+                    
+                    const img = document.createElement('img');
+                    img.src = escapeHtml(item.img);
+                    img.alt = escapeHtml(item.name);
+                    img.className = 'h-14 w-14 rounded-lg object-cover';
+                    itemDiv.appendChild(img);
+                    
+                    const content = document.createElement('div');
+                    content.className = 'flex-1';
+                    
+                    const header = document.createElement('div');
+                    header.className = 'flex justify-between items-start';
+                    
+                    const title = document.createElement('h4');
+                    title.className = 'font-bold text-gray-800 text-sm leading-tight';
+                    title.textContent = escapeHtml(item.name);
+                    header.appendChild(title);
+                    
+                    const removeBtn = document.createElement('button');
+                    removeBtn.className = 'text-gray-300 hover:text-red-500';
+                    removeBtn.setAttribute('onclick', `removeFromCart(${index})`);
+                    removeBtn.setAttribute('aria-label', `Eliminar ${escapeHtml(item.name)}`);
+                    removeBtn.innerHTML = '<i class="fas fa-trash-alt text-xs" aria-hidden="true"></i>';
+                    header.appendChild(removeBtn);
+                    
+                    content.appendChild(header);
+                    
+                    const extras = document.createElement('div');
+                    extras.className = 'text-[10px] text-gray-500 mb-2';
+                    extras.textContent = item.extras.length ? '+ ' + item.extras.map(e => escapeHtml(e)).join(', ') : 'Solo';
+                    content.appendChild(extras);
+                    
+                    const footer = document.createElement('div');
+                    footer.className = 'flex justify-between items-center';
+                    
+                    const qtyControls = document.createElement('div');
+                    qtyControls.className = 'flex items-center gap-2 bg-gray-50 rounded-lg px-2 py-1';
+                    
+                    const minusBtn = document.createElement('button');
+                    minusBtn.className = 'text-gray-500 hover:text-black font-bold text-xs';
+                    minusBtn.setAttribute('onclick', `updateQty(${index}, -1)`);
+                    minusBtn.setAttribute('aria-label', 'Reducir cantidad');
+                    minusBtn.textContent = '-';
+                    qtyControls.appendChild(minusBtn);
+                    
+                    const qty = document.createElement('span');
+                    qty.className = 'text-xs font-black w-4 text-center';
+                    qty.textContent = item.qty;
+                    qtyControls.appendChild(qty);
+                    
+                    const plusBtn = document.createElement('button');
+                    plusBtn.className = 'text-gray-500 hover:text-black font-bold text-xs';
+                    plusBtn.setAttribute('onclick', `updateQty(${index}, 1)`);
+                    plusBtn.setAttribute('aria-label', 'Aumentar cantidad');
+                    plusBtn.textContent = '+';
+                    qtyControls.appendChild(plusBtn);
+                    
+                    footer.appendChild(qtyControls);
+                    
+                    const price = document.createElement('div');
+                    price.className = 'font-black text-blue-700 text-sm';
+                    price.textContent = '$' + (item.price * item.qty).toLocaleString();
+                    footer.appendChild(price);
+                    
+                    content.appendChild(footer);
+                    itemDiv.appendChild(content);
+                    container.appendChild(itemDiv);
+                });
+            } catch (error) {
+                console.error('Error en renderCartItems:', error);
+            }
         }
 
         function checkout() {
-            if (cart.length === 0) return;
-            let msg = "*🔥 PEDIDO WEB TAZZU 🔥*\n\n";
-            cart.forEach(item => { const sub = item.price * item.qty; msg += `▪️ ${item.qty}x ${item.name} ($${sub.toLocaleString()})\n`; if(item.extras.length > 0) msg += `   _Extras: ${item.extras.join(' + ')}_\n`; });
-            msg += `\n*TOTAL: ${document.getElementById('cart-total').innerText}*`;
-            msg += "\n\n📍 _Dirección:_ \n💳 _Pago:_";
-            window.open(`https://wa.me/5491112345678?text=${encodeURIComponent(msg)}`, '_blank');
+            try {
+                if (cart.length === 0) return;
+                
+                let msg = CONFIG.whatsappMessage.header + '\n\n';
+                cart.forEach(item => { 
+                    const sub = item.price * item.qty; 
+                    msg += `▪️ ${item.qty}x ${item.name} ($${sub.toLocaleString()})\n`; 
+                    if(item.extras.length > 0) msg += `   _Extras: ${item.extras.join(' + ')}_\n`; 
+                });
+                msg += `\n*TOTAL: ${document.getElementById('cart-total')?.textContent || '$0'}*`;
+                msg += CONFIG.whatsappMessage.footer;
+                
+                const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`;
+                window.open(url, '_blank', 'noopener,noreferrer');
+                
+                // Cerrar carrito después de enviar
+                toggleCart();
+            } catch (error) {
+                console.error('Error en checkout:', error);
+                alert('Error al abrir WhatsApp. Por favor, intenta nuevamente.');
+            }
         }
-        renderProducts(products);
+        
+        // ============================================
+        // INICIALIZACIÓN
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                renderProducts(products);
+                // Inicializar primer botón como activo
+                const firstBtn = document.querySelector('.cat-btn');
+                if (firstBtn) {
+                    firstBtn.setAttribute('aria-selected', 'true');
+                }
+            } catch (error) {
+                console.error('Error en inicialización:', error);
+            }
+        });
     </script>
 </body>
 </html>
+
